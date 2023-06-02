@@ -131,7 +131,7 @@ function App() {
           </div>
         </div>
         <div className="text-center mt-2">
-          Maintained by
+          Developed by
           <a href="https://linkedin.com/in/arpan-kumar-de/" className="text-blue-700 font-semibold">
             &nbsp;Arpan
           </a>
@@ -152,8 +152,8 @@ function App() {
       </div>
 
       {/** SIDEBAR */}
-      <aside className='bg-sky-400 h-[97.5vh] w-[25%] m-2 pl-2 border-l-[1px] border-zinc-300 flex flex-col'>
-        <div className="flex bg-cyan-200 h-[60%] flex-col overflow-y-scroll" id="minorBtnList">
+      <aside className='h-[97.5vh] w-[25%] m-2 pl-2 border-l-[1px] border-zinc-300 flex flex-col'>
+        <div className="flex h-[60%] flex-col overflow-y-scroll" id="minorBtnList">
           {(majCity != '') && (places[majCity].map(item2 => (
             <button key={item2} onClick={() => setMinorURL(item2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
               <span className="material-icons-outlined text-base">
@@ -163,8 +163,10 @@ function App() {
             </button>)
           ))}
         </div>
-        <div className="flex bg-pink-300 h-[40%]">
-          kwj
+        <div className="flex h-[40%] text-center mt-4 border-t-[1px] border-zinc-200 w-full">
+          <div className="flex justify-center w-full">
+            Instagram Section
+          </div>
         </div>
       </aside>
     </div>
