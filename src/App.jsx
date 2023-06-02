@@ -2,28 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { places } from './api/places';
 
 function App() {
-  const [map, setMap] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21167573.757009193!2d78.03745447728565!3d23.66765408621442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sus!4v1685703314199!5m2!1sen!2sus")
+  const [map, setMap] = useState("https://www.google.com/maps?q=India&output=embed")
   const [majCity, setMajCity] = useState('');
 
-  useEffect(() => {
-    // places.Delhi.map(place=>console.log(place));
-    // console.log()
-
-    // console.log(molecules)
-  }, []);
-  function setMinorURL(code) {
-    console.log(code);
+  function changeMapSrc(code) {
+    let mapSrc = "https://www.google.com/maps?q=" + code + "&output=embed";
+    setMap(mapSrc);
   }
 
   const bigPlaces = Object.keys(places); //List of Major Cities
+
   function setMajorURL(code) {
-    let index = bigPlaces.indexOf(code); //Finding index from Major city List using name
-    // console.log(bigPlaces);
-    setMap(bigCoord[index]); //setting iframe to new coordinates of 
+    changeMapSrc(code) //setting iframe to new coordinates of 
     setMajCity(code);
   }
-
-
 
   //coordinates of Major Cities
   const bigCoord = [
@@ -92,38 +84,6 @@ function App() {
                 {item}
               </button>
             ))}
-            {/* <div>
-              <button onClick={() => setMajorURL(2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
-                <span className="material-icons-outlined text-base">
-                  north_east
-                </span>
-                Delhi
-              </button>
-              <button onClick={() => setMajorURL(0)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
-                <span className="material-icons-outlined text-base">
-                  north_east
-                </span>
-                Kolkata
-              </button>
-              <button onClick={() => setMajorURL(3)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
-                <span className="material-icons-outlined text-base">
-                  north_east
-                </span>
-                Chennai
-              </button>
-              <button onClick={() => setMajorURL(2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
-                <span className="material-icons-outlined text-base">
-                  north_east
-                </span>
-                Mumbai
-              </button>
-              <button onClick={() => setMajorURL(4)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
-                <span className="material-icons-outlined text-base">
-                  north_east
-                </span>
-                Bengaluru
-              </button>
-            </div> */}
             <div className='w-full text-center p-2 hidden' id="noFoundText">
               <span className=''>No suitable places found :(</span>
             </div>
@@ -155,7 +115,7 @@ function App() {
       <aside className='h-[97.5vh] w-[25%] m-2 pl-2 border-l-[1px] border-zinc-300 flex flex-col'>
         <div className="flex h-[60%] flex-col overflow-y-scroll" id="minorBtnList">
           {(majCity != '') && (places[majCity].map(item2 => (
-            <button key={item2} onClick={() => setMinorURL(item2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
+            <button key={item2} onClick={() => changeMapSrc(item2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
               <span className="material-icons-outlined text-base">
                 north_east
               </span>
