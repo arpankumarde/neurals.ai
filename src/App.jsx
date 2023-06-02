@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { places } from './api/places';
 
 function App() {
-  const [map, setMap] = useState("https://www.google.com/maps?q=India&output=embed");
+  const [map, setMap] = useState("https://www.google.com/maps?q=India,India&output=embed");
   const [majCity, setMajCity] = useState('');
 
   function changeMapSrc(code) {
-    let mapSrc = "https://www.google.com/maps?q=" + code + "&output=embed";
+    let mapSrc = "https://www.google.com/maps?q=" + code + ",India&output=embed";
     setMap(mapSrc);
   }
 
@@ -60,6 +60,10 @@ function App() {
   return (
     <div className="flex w-full min-h-screen">
 
+      {/** LOADING SPINNER */}
+      <div className="loader-container">
+        <div className="spinner"></div>
+      </div>
       {/** SEARCHBAR */}
       <aside className='w-[25%] m-2 pr-2 flex flex-col justify-between border-r-[1px] border-zinc-200'>
         <div className="placeFrame w-full">

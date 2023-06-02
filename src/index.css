@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+iframe {
+    background-image: url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
