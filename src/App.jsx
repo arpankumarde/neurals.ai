@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { places } from './api/places';
-import { Navbar } from './components';
+import { places, posts } from './data';
+import { Navbar, Social } from './components';
+import { useFetch } from './hooks';
+import axios from "axios";
 
 function App() {
   const [map, setMap] = useState("https://www.google.com/maps?q=India&output=embed");
@@ -58,9 +60,13 @@ function App() {
     // console.log(document.querySelector(".listBtn"));
   }
 
+  // const { data = dataInfo, loading, error, refetch } = useFetch("https://noembed.com/embed?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+  // console.log(data);
+
   return (
     <React.Fragment>
       <Navbar />
+
       <div className="flex sm:flex-row flex-col w-full min-h-screen select-none">
 
         {/** SEARCHBAR */}
@@ -109,7 +115,7 @@ function App() {
         </div>
 
         {/** SIDEBAR */}
-        <aside className='h-[97.5vh] hidden w-[25%] m-2 pl-2 border-l-[1px] border-zinc-300 sm:flex sm:flex-col sm:gap-2'>
+        <aside className='h-[97.5vh] hidden w-[30%] m-2 pl-2 border-l-[1px] border-zinc-300 sm:flex sm:flex-col sm:gap-2'>
           <div className="flex h-[60%] flex-col overflow-y-scroll" id="minorBtnList">
             {(majCity != '') && (places[majCity].map(item2 => (
               <button key={item2} onClick={() => changeMapSrc(item2)} type='button' className='listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg flex items-center gap-1'>
@@ -121,9 +127,7 @@ function App() {
             ))}
           </div>
           <div className="flex h-[40%] text-center border-t-[1px] border-zinc-200 w-full">
-            <div className="flex justify-center w-full items-center">
-              Instagram Section
-            </div>
+            <Social />
           </div>
         </aside>
       </div>
