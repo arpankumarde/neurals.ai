@@ -1,4 +1,4 @@
 export const posts = [
-    'h1',
-    'h2',
+    'linkToPost1',
+    'linkToPost2'
 ];

@@ -64,7 +64,7 @@ function App() {
       <div className="flex sm:flex-row flex-col w-full min-h-screen select-none">
 
         {/** SEARCHBAR */}
-        <aside className='overflow-auto sm:w-[25%] w-full m-2 pr-2 flex flex-col justify-between border-r-[1px] border-zinc-200'>
+        <aside className='overflow-auto sm:w-[25%] w-full m-2 sm:pr-2 pr-0 flex flex-col justify-between sm:border-r-[1px] border-zinc-200'>
           <div className="placeFrame w-full flex sm:flex-col flex-row">
             <div id="searchbar" className="mr-2 sm:mr-0 sm:mb-2 flex items-center border-sky-500 hover:border-sky-600 border-2 rounded-full px-3 text-lg">
               <span className="material-icons-outlined text-lg">
