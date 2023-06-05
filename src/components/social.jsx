@@ -6,7 +6,7 @@ const Social = () => {
     return (
         <div id="socialID" className='overflow-auto rounded-lg w-full scrollbar-hide'>
             {posts.map((post, key) => (
-                <div key={key} className='flex justify-center overflow-auto w-full sm:w-fit mt-2'>
+                <div key={key} className='flex justify-center overflow-auto w-full sm:w-fit'>
                     <InstagramEmbed url={post} width="100%" height="100%" />
                 </div>
             ))}
