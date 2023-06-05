@@ -1,21 +1,15 @@
 import React from 'react';
 import { posts } from '../data';
-import { useFetch } from '../hooks';
+import { InstagramEmbed } from 'react-social-media-embed';
 
 const Social = () => {
-    function getSocial(url) {
-        // console.log(url);
-        const { data = dataInfo, loading, error, refetch } = useFetch(url);
-        return data;
-    }
-    let data;
     return (
-        <div id="socialID" className='bg-red-300 w-full rounded-lg mr-3'>
-            {posts.map(post => {
-                data = getSocial(post)
-                let elem = decodeURIComponent(data.html)
-                document.getElementById("socialID").innerHTML = elem;
-            })}
+        <div id="socialID" className='overflow-auto rounded-lg w-full scrollbar-hide'>
+            {posts.map((post, key) => (
+                <div key={key} className='flex justify-center overflow-auto w-full sm:w-fit mt-2'>
+                    <InstagramEmbed url={post} width="100%" height="100%" />
+                </div>
+            ))}
         </div>
     )
 }

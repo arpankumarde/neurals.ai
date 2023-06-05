@@ -36,7 +36,7 @@ function useFetch(url) {
                 setLoading(false);
             });
     };
-    // console.log({ data, loading, error, refetch });
+    console.log({ data, loading, error, refetch });
 
     return { data, loading, error, refetch };
 }

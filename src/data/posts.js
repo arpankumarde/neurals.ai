@@ -1,4 +1,5 @@
 export const posts = [
-    'https://youtube.com/shorts/yTHr6CI_S_g',
-    'https://youtube.com/shorts/1IQGNOTK4vI',
+    'https://www.instagram.com/p/ChPXJivL1HM/',
+    'https://www.instagram.com/p/CiUPE_Hrerf/',
+    'https://www.instagram.com/p/ClabZvaSO0a/',
 ];
