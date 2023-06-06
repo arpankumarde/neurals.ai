@@ -2,26 +2,16 @@ import React, { useState } from 'react'
 import { places } from './data';
 import { Navbar, Social } from './components';
 import axios from "axios";
-import { FaLocationArrow } from 'react-icons/fa';
-import { GoLocation } from 'react-icons/go';
+import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { TbLocationBroken } from 'react-icons/tb';
+import { MdTempleHindu } from 'react-icons/md';
+import { GiWaterfall } from 'react-icons/gi'
 
 
 function App() {
   const [map, setMap] = useState("https://www.google.com/maps?&z=5&q=India&output=embed");
   const [majCity, setMajCity] = useState('');
-
-  function getCoord(placeName) {
-    let url = import.meta.env.VITE_COORD_API + encodeURI(placeName + ', India');
-    let data;
-    axios.get(url)
-      .then((response) => {
-        data = { "lat": response.data[0].lat, "lon": response.data[0].lon };
-      }).finally((response) => {
-        return (data)
-      })
-  };
 
   function changeMapSrc(code) {
     let url = import.meta.env.VITE_COORD_API + encodeURI(code + ', India');
@@ -35,8 +25,6 @@ function App() {
       })
   }
 
-  // const bigPlaces = Object.keys(places); //List of Major Cities
-
   function setMajorURL(code) {
     changeMapSrc(code) //setting iframe to new coordinates
     setMajCity(code); //setting Major City to update Minor City List
@@ -49,8 +37,6 @@ function App() {
         c++;
       }
     }
-    // console.log("its is", c);
-    // console.log(li);
     if (c >= li.length) {
       document.getElementById("noFoundText").style.display = "block";
     }
@@ -60,18 +46,14 @@ function App() {
   }
 
   function sortList() {
-    // console.log("inside sortList()");
     let input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("search");
-    // console.log(input);
     filter = input.value.toUpperCase();
     ul = document.getElementById("btnList");
     li = ul.getElementsByTagName("button");
-    // console.log(ul);
     for (i = 0; i < li.length; i++) {
       a = li[i];
       txtValue = a.textContent || a.innerText;
-      // console.log(txtValue);
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
@@ -79,11 +61,18 @@ function App() {
       }
       countHiddenNodes(li);
     }
-    // console.log(document.querySelector(".listBtn"));
   }
 
-  // const { data = dataInfo, loading, error, refetch } = useFetch("https://noembed.com/embed?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-  // console.log(data);
+  const typeToClass = ([placeType, category]) => {
+    if (placeType == 'city' && category == 'parent') return <FaLocationArrow className='text-red-600' />
+    else if (placeType == 'city') return <FaCity />
+    else if (placeType == 'hill') return <FaMountain className='text-amber-900' />
+    else if (placeType == 'beach') return <FaUmbrellaBeach className='text-blue-500' />
+    else if (placeType == 'jungle') return <FaTree className='text-green-700' />
+    else if (placeType == 'pilgrimage') return <MdTempleHindu className='text-zinc-600' />
+    else if (placeType == 'monument') return <FaMonument className='text-red-600' />
+    else if (placeType == 'falls') return <GiWaterfall className='text-sky-600' />
+  }
 
   return (
     <React.Fragment>
@@ -92,20 +81,31 @@ function App() {
       <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden gap-2 sm:gap-0">
 
         {/** SEARCHBAR */}
-        <aside className='overflow-auto sm:w-[55%] w-full m-2 sm:pr-2 pr-0 flex flex-col justify-between sm:border-r-[1px] border-zinc-200'>
-          <div className="placeFrame w-full flex sm:flex-col flex-row pb-3 sm:pb-0">
-            <div id="searchbar" className="mr-2 sm:mr-0 sm:mb-2 flex items-center border-sky-500 hover:border-sky-600 border-2 rounded-full px-3 text-lg">
-              <AiOutlineSearch />
-              <input id="search" type="text" placeholder="Search..." className='w-24 bg-transparent sm:w-full outline-none ml-2 rounded-full h-10 text-lg' onChange={sortList} />
-            </div>
-            <div id='btnList' className=''>
-              {places.map((item) => (
+        <aside className='sm:h-[90vh] sm:w-[45%] w-full m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
+          <div id="searchbar" className="sticky mr-2 sm:mr-0 sm:mb-2 flex items-center border-sky-500 hover:border-sky-600 border-2 rounded-full px-3 text-lg">
+            <AiOutlineSearch />
+            <input id="search" type="text" placeholder="Search..." className='w-24 bg-transparent sm:w-full outline-none ml-2 rounded-full h-10 text-lg' onChange={sortList} />
+          </div>
+          <div className="placeFrame scrollbar-hide w-full flex flex-col justify-between pb-3 sm:pb-0 overflow-auto">
+            <div id='btnList' className='flex gap-1 flex-col'>
+              {places.map((item, key) => (
                 <>
-                  <button onClick={() => setMajorURL(item)} type='button' className={` ${(item == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
-                    <FaLocationArrow className='text-sky-600 text-base' />
-                    <span>{item}</span>
+                  <button key={key} onClick={() => setMajorURL(item.name)} type='button' className={`${(item.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
+                    {typeToClass([item.type, item.category])}
+                    <span>{item.name}</span>
                   </button>
-                  <wbr />
+                  {item.child.map((child, key2) => (
+                    <button key={key2} onClick={() => setMajorURL(child.name)} type='button' className={`justify-between ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[10%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
+                      <p className='flex items-center gap-2'>
+                        {typeToClass([child.type, item.child])}
+                        <span>{child.name}</span>
+                      </p>
+                      <span className='text-sm inline-flex text-center gap-1'>
+                        <span className='bg-violet-200 hover:bg-violet-300 rounded-md px-1 py-[0.15rem]'>{child.distance} km</span>
+                        <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hr</span>
+                      </span>
+                    </button>
+                  ))}
                 </>
               ))}
               <div className='sm:w-full min-w-max text-center p-2 hidden' id="noFoundText">
@@ -113,13 +113,14 @@ function App() {
               </div>
               <hr className="mt-2" />
             </div>
+            <div className="text-center mt-2 sm:block hidden">
+              Developed by
+              <a href="https://linkedin.com/in/arpan-kumar-de/" className="text-sky-700 font-semibold">
+                &nbsp;Arpan
+              </a>
+            </div>
           </div>
-          <div className="text-center mt-2 sm:block hidden">
-            Developed by
-            <a href="https://linkedin.com/in/arpan-kumar-de/" className="text-sky-700 font-semibold">
-              &nbsp;Arpan
-            </a>
-          </div>
+
         </aside>
 
         {/** MAPSPACE */}
@@ -130,24 +131,13 @@ function App() {
               title='Map'
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              className='w-full h-[97.2vh] rounded-xl'
+              className='w-full h-[90vh] rounded-xl'
             />
           </div>
         </div>
 
         {/** RIGHT SIDEBAR */}
-        <aside className='sm:h-[97.5vh] max-w-full sm:w-[30%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
-          {/* <div className="sm:flex sm:h-[40%] sm:flex-col sm:overflow-y-scroll" id="minorBtnList">
-            {(majCity != '') && (places[majCity].map((item2, key) => (
-              <>
-                <button key={key} onClick={() => changeMapSrc(item2)} type='button' className='inline-flex overflow-auto sm:overflow-visible shadow-md sm:shadow-none listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 w-fit sm:w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg sm:flex items-center gap-1'>
-                  <GoLocation className='text-sky-600 text-lg' />
-                  {item2}
-                </button>
-              </>
-            )
-            ))}
-          </div> */}
+        <aside className='sm:h-[90vh] max-w-full sm:w-[30%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
           <div className="overflow-auto sm:flex text-center border-zinc-200 scrollbar-hide">
             <Social />
           </div>
