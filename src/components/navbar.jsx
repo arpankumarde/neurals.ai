@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Typical from 'react-typical';
 
 const Navbar = () => {
   return (
@@ -9,7 +10,18 @@ const Navbar = () => {
           alt="maps-logo"
           className='h-10'
         />
-        <span className='font-semibold'>Maps of India</span>
+        <span className='font-semibold'>MAPS OF
+          <Typical
+            steps={[
+              ' India',
+              2500,
+              ' Heaven',
+              2500,
+            ]}
+            wrapper="span"
+            loop={Infinity}
+          />
+        </span>
       </a>
     </header>
   )

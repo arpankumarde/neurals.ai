@@ -3,10 +3,11 @@ import { places } from './data';
 import { Navbar, Social } from './components';
 import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument } from 'react-icons/fa';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineLink, AiOutlineSearch } from 'react-icons/ai';
 import { TbLocationBroken } from 'react-icons/tb';
-import { MdTempleHindu } from 'react-icons/md';
+import { MdTempleHindu, MdYoutubeSearchedFor } from 'react-icons/md';
 import { GiWaterfall } from 'react-icons/gi'
+import { CgRedo } from 'react-icons/cg';
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
     li = ul.getElementsByTagName("button");
     for (i = 0; i < li.length; i++) {
       a = li[i];
-      txtValue = a.textContent || a.innerText;
+      txtValue = a.getAttribute('data-search') || a.textContent || a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
@@ -90,12 +91,12 @@ function App() {
             <div id='btnList' className='flex gap-1 flex-col'>
               {places.map((item, key) => (
                 <>
-                  <button key={key} onClick={() => setMajorURL(item.name)} type='button' className={`${(item.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
+                  <button key={key} onClick={() => setMajorURL(item.name)} data-search={item.name} type='button' className={`${(item.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
                     {typeToClass([item.type, item.category])}
                     <span>{item.name}</span>
                   </button>
                   {item.child.map((child, key2) => (
-                    <button key={key2} onClick={() => setMajorURL(child.name)} type='button' className={`justify-between ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[10%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
+                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[10%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
                       <p className='flex items-center gap-2'>
                         {typeToClass([child.type, item.child])}
                         <span>{child.name}</span>
@@ -108,16 +109,19 @@ function App() {
                   ))}
                 </>
               ))}
-              <div className='sm:w-full min-w-max text-center p-2 hidden' id="noFoundText">
-                <span className='text-base text-center'>No suitable places found <TbLocationBroken className='text-red-600 inline' /> </span>
+              <div className='text-base text-center sm:w-full min-w-max p-2 hidden' id="noFoundText">
+                <span className=''>No suitable places found <TbLocationBroken className='text-red-600 inline' /></span><br />
+                <span className='hover:bg-zinc-200 rounded-lg px-2 cursor-pointer inline-flex align-middle items-center gap-1 transition ease-in-out' onClick={() => { document.getElementById("search").value = ''; sortList() }} >Reset Search?<CgRedo className='text-red-600 inline text-lg -scale-x-100' /></span>
               </div>
               <hr className="mt-2" />
             </div>
-            <div className="text-center mt-2 sm:block hidden">
-              Developed by
-              <a href="https://linkedin.com/in/arpan-kumar-de/" className="text-sky-700 font-semibold">
-                &nbsp;Arpan
-              </a>
+            <div className="text-center mt-2 sm:block hidden ">
+              Developed by&nbsp;
+              <div class="group inline-flex">
+                <a href="https://linkedin.com/in/arpan-kumar-de/" target='_blank' referrerPolicy='no-referrer' className="text-sky-700 font-semibold inline-flex">
+                  <span className='link-underline link-underline-black transition ease-in-out '>Arpan</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -139,14 +143,10 @@ function App() {
         {/** RIGHT SIDEBAR */}
         <aside className='sm:h-[90vh] max-w-full sm:w-[30%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
           <div className="overflow-auto sm:flex text-center border-zinc-200 scrollbar-hide">
-            <Social />
+            {/* <Social /> */}
           </div>
         </aside>
       </div>
-      <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
-        defer
-      ></script>
     </React.Fragment>
   )
 }
