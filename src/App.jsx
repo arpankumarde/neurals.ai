@@ -143,7 +143,7 @@ function App() {
         {/** RIGHT SIDEBAR */}
         <aside className='sm:h-[90vh] max-w-full sm:w-[30%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
           <div className="overflow-auto sm:flex text-center border-zinc-200 scrollbar-hide">
-            {/* <Social /> */}
+            <Social />
           </div>
         </aside>
       </div>
