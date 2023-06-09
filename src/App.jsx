@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { places } from './data';
-import { Navbar, Social } from './components';
+import { Header, Social } from './components';
 import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument } from 'react-icons/fa';
-import { AiOutlineLink, AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { TbLocationBroken } from 'react-icons/tb';
-import { MdTempleHindu, MdYoutubeSearchedFor } from 'react-icons/md';
+import { MdTempleHindu } from 'react-icons/md';
 import { GiWaterfall } from 'react-icons/gi'
 import { CgRedo } from 'react-icons/cg';
 
@@ -16,13 +16,19 @@ function App() {
 
   function changeMapSrc(code) {
     let url = import.meta.env.VITE_COORD_API + encodeURI(code + ', India');
-    let data;
+    let data, mapSrc;
     axios.get(url)
       .then((response) => {
         data = { "lat": response.data[0].lat, "lon": response.data[0].lon };
-      }).finally((response) => {
-        let mapSrc = encodeURI(`https://www.google.com/maps?z=7&q=${data.lat},${data.lon}` + `&output=embed&ll=${data.lat},${data.lon}`);
+      }).finally(() => {
+        if (data) {
+          mapSrc = encodeURI(`https://www.google.com/maps?z=7&q=${data.lat},${data.lon}` + `&output=embed&ll=${data.lat},${data.lon}`);
+        } else {
+          mapSrc = encodeURI(`https://www.google.com/maps?z=9&q=${code}` + `&output=embed&ll=${code}`);
+        }
         setMap(mapSrc);
+      }).catch((error) => {
+        console.error(error)
       })
   }
 
@@ -77,12 +83,12 @@ function App() {
 
   return (
     <React.Fragment>
-      <Navbar />
+      <Header />
 
       <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden gap-2 sm:gap-0">
 
         {/** SEARCHBAR */}
-        <aside className='sm:h-[90vh] sm:w-[45%] w-full m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
+        <aside className='sm:h-[89.9vh] sm:w-[45%] w-full m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
           <div id="searchbar" className="sticky mr-2 sm:mr-0 sm:mb-2 flex items-center border-sky-500 hover:border-sky-600 border-2 rounded-full px-3 text-lg">
             <AiOutlineSearch />
             <input id="search" type="text" placeholder="Search..." className='w-24 bg-transparent sm:w-full outline-none ml-2 rounded-full h-10 text-lg' onChange={sortList} />
@@ -103,7 +109,7 @@ function App() {
                       </p>
                       <span className='text-sm inline-flex text-center gap-1'>
                         <span className='bg-violet-200 hover:bg-violet-300 rounded-md px-1 py-[0.15rem]'>{child.distance} km</span>
-                        <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hr</span>
+                        <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hrs</span>
                       </span>
                     </button>
                   ))}
@@ -117,7 +123,7 @@ function App() {
             </div>
             <div className="text-center mt-2 sm:block hidden ">
               Developed by&nbsp;
-              <div class="group inline-flex">
+              <div className="inline-flex">
                 <a href="https://linkedin.com/in/arpan-kumar-de/" target='_blank' referrerPolicy='no-referrer' className="text-sky-700 font-semibold inline-flex">
                   <span className='link-underline link-underline-black transition ease-in-out '>Arpan</span>
                 </a>
@@ -135,13 +141,13 @@ function App() {
               title='Map'
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              className='w-full h-[90vh] rounded-xl'
+              className='w-full h-[89.9vh] rounded-xl'
             />
           </div>
         </div>
 
         {/** RIGHT SIDEBAR */}
-        <aside className='sm:h-[90vh] max-w-full sm:w-[30%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
+        <aside className='sm:h-[89.9vh] max-w-full sm:w-[25%] m-2 sm:mr-0 sm:px-2 sm:pl-2 sm:border-l-[1px] sm:border-zinc-300 flex flex-col gap-2'>
           <div className="overflow-auto sm:flex text-center border-zinc-200 scrollbar-hide">
             <Social />
           </div>

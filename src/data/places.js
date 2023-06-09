@@ -8,50 +8,50 @@ export const places = [
         "name": "Jaipur",
         "type": "city",
         "category": "child",
-        "distance": "281",
-        "time": "5"
+        "distance": "280",
+        "time": "4.5"
       },
       {
         "name": "Agra",
         "type": "city",
         "category": "child",
-        "distance": "235",
-        "time": "4"
+        "distance": "233",
+        "time": "3.5"
       },
       {
         "name": "Shimla",
         "type": "hill",
         "category": "child",
-        "distance": "355",
-        "time": "9"
+        "distance": "348",
+        "time": "7"
       },
       {
         "name": "Mussoorie",
         "type": "hill",
         "category": "child",
-        "distance": "282",
-        "time": "7"
+        "distance": "280 ",
+        "time": "6"
       },
       {
         "name": "Rishikesh",
         "type": "pilgrimage",
         "category": "child",
-        "distance": "235",
-        "time": "6"
+        "distance": "242",
+        "time": "5"
       },
       {
         "name": "Nainital",
         "type": "city",
         "category": "child",
-        "distance": "235",
+        "distance": "303",
         "time": "7"
       },
       {
         "name": "Jim Corbett National Park",
         "type": "monument",
         "category": "child",
-        "distance": "245",
-        "time": "6"
+        "distance": "240",
+        "time": "5"
       },
       {
         "name": "Mathura",
@@ -64,14 +64,14 @@ export const places = [
         "name": "Haridwar",
         "type": "city",
         "category": "child",
-        "distance": "247",
-        "time": "5"
+        "distance": "222",
+        "time": "4"
       },
       {
         "name": "Alwar",
         "type": "city",
         "category": "child",
-        "distance": "155",
+        "distance": "150",
         "time": "3"
       }
     ]
@@ -85,71 +85,71 @@ export const places = [
         "name": "Lonavala",
         "type": "hill",
         "category": "child",
-        "distance": "84",
+        "distance": "83",
         "time": "2"
       },
       {
         "name": "Mahabaleshwar",
         "type": "pilgrimage",
         "category": "child",
-        "distance": "261",
-        "time": "5"
+        "distance": "263",
+        "time": "4.5"
       },
       {
         "name": "Pune",
         "type": "city",
         "category": "child",
-        "distance": "151",
+        "distance": "148",
         "time": "3"
       },
       {
         "name": "Khandala",
         "type": "hill",
         "category": "child",
-        "distance": "92",
+        "distance": "70",
         "time": "2"
       },
       {
         "name": "Matheran",
         "type": "hill",
         "category": "child",
-        "distance": "83",
-        "time": "2"
+        "distance": "44",
+        "time": "1.5"
       },
       {
         "name": "Nashik",
         "type": "city",
         "category": "child",
-        "distance": "172",
-        "time": "4"
+        "distance": "167",
+        "time": "3"
       },
       {
         "name": "Kolad",
         "type": "city",
         "category": "child",
-        "distance": "123",
+        "distance": "122",
         "time": "3"
       },
       {
         "name": "Lavasa",
         "type": "city",
         "category": "child",
-        "distance": "190",
-        "time": "5"
+        "distance": "188",
+        "time": "4"
       },
       {
         "name": "Karjat",
         "type": "city",
         "category": "child",
-        "distance": "63",
-        "time": "2"
+        "distance": "62",
+        "time": "1.5"
       },
       {
         "name": "Ajanta and Ellora Caves",
         "type": "monument",
         "category": "child",
-        "distance": "320",
-        "time": "6"
+        "distance": "336",
+        "time": "7"
       }
     ]
   },
@@ -162,71 +162,71 @@ export const places = [
         "name": "Mysore",
         "type": "city",
         "category": "child",
-        "distance": "149",
+        "distance": "144",
         "time": "3"
       },
       {
         "name": "Coorg",
         "type": "city",
         "category": "child",
-        "distance": "254",
-        "time": "5"
+        "distance": "267",
+        "time": "5.5"
       },
       {
         "name": "Ooty",
         "type": "hill",
         "category": "child",
-        "distance": "265",
+        "distance": "270",
         "time": "6"
       },
       {
         "name": "Wayanad",
         "type": "city",
         "category": "child",
-        "distance": "271",
-        "time": "6"
+        "distance": "277",
+        "time": "5.5"
       },
       {
         "name": "Hampi",
         "type": "monument",
         "category": "child",
-        "distance": "341",
-        "time": "6"
+        "distance": "345",
+        "time": "7"
       },
       {
         "name": "Chikmagalur",
         "type": "city",
         "category": "child",
-        "distance": "241",
-        "time": "5"
+        "distance": "243",
+        "time": "4.5"
       },
       {
         "name": "Kabini",
         "type": "city",
         "category": "child",
-        "distance": "205",
+        "distance": "210",
         "time": "4"
       },
       {
         "name": "Nandi Hills",
         "type": "hill",
         "category": "child",
-        "distance": "62",
-        "time": "1"
+        "distance": "61",
+        "time": "1.5"
       },
       {
         "name": "Shivanasamudra Falls",
         "type": "falls",
         "category": "child",
-        "distance": "127",
+        "distance": "135",
         "time": "3"
       },
       {
         "name": "Sakleshpur",
         "type": "hill",
         "category": "child",
-        "distance": "400",
-        "time": "8"
+        "distance": "224",
+        "time": "5"
       }
     ]
   },
@@ -239,71 +239,71 @@ export const places = [
         "name": "Darjeeling",
         "type": "hill",
         "category": "child",
-        "distance": "640",
-        "time": "16"
+        "distance": "608",
+        "time": "12"
       },
       {
         "name": "Sundarbans",
         "type": "jungle",
         "category": "child",
-        "distance": "106",
+        "distance": "112",
         "time": "3"
       },
       {
         "name": "Digha",
         "type": "beach",
         "category": "child",
-        "distance": "184",
-        "time": "5"
+        "distance": "187",
+        "time": "4"
       },
       {
         "name": "Shantiniketan",
         "type": "city",
         "category": "child",
-        "distance": "164",
-        "time": "4"
+        "distance": "163",
+        "time": "3.5"
       },
       {
         "name": "Mandarmani",
         "type": "beach",
         "category": "child",
-        "distance": "172",
-        "time": "4"
+        "distance": "171",
+        "time": "3.5"
       },
       {
         "name": "Bishnupur",
         "type": "city",
         "category": "child",
-        "distance": "138",
-        "time": "4"
+        "distance": "132",
+        "time": "3"
       },
       {
         "name": "Murshidabad",
         "type": "city",
         "category": "child",
-        "distance": "210",
-        "time": "6"
+        "distance": "221",
+        "time": "5"
       },
       {
         "name": "Bakkhali",
         "type": "city",
         "category": "child",
-        "distance": "140",
-        "time": "4"
+        "distance": "125",
+        "time": "3"
       },
       {
         "name": "Kurseong",
         "type": "city",
         "category": "child",
-        "distance": "610",
-        "time": "14"
+        "distance": "587",
+        "time": "11"
       },
       {
         "name": "Kalimpong",
         "type": "city",
         "category": "child",
-        "distance": "648",
-        "time": "15"
+        "distance": "624",
+        "time": "12"
       }
     ]
   },
@@ -316,57 +316,57 @@ export const places = [
         "name": "Pondicherry",
         "type": "city",
         "category": "child",
-        "distance": "151",
-        "time": "4"
+        "distance": "170",
+        "time": "3"
       },
       {
         "name": "Mahabalipuram",
         "type": "city",
         "category": "child",
-        "distance": "56",
-        "time": "1"
+        "distance": "55",
+        "time": "1.5"
       },
       {
         "name": "Kodaikanal",
         "type": "hill",
         "category": "child",
-        "distance": "259",
-        "time": "11"
+        "distance": "524",
+        "time": "10"
       },
       {
         "name": "Yelagiri",
         "type": "hill",
         "category": "child",
-        "distance": "228",
-        "time": "6"
+        "distance": "227",
+        "time": "4.5"
       },
       {
         "name": "Yercaud",
         "type": "hill",
         "category": "child",
-        "distance": "366",
-        "time": "7"
+        "distance": "367",
+        "time": "6"
       },
       {
         "name": "Tirupati",
         "type": "pilgrimage",
         "category": "child",
-        "distance": "133",
+        "distance": "135",
         "time": "3"
       },
       {
         "name": "Rameshwaram",
         "type": "city",
         "category": "child",
-        "distance": "559",
+        "distance": "550",
         "time": "10"
       },
       {
         "name": "Vellore",
         "type": "city",
         "category": "child",
-        "distance": "139",
-        "time": "4"
+        "distance": "137",
+        "time": "3"
       },
       {
         "name": "Thanjavur",
@@ -379,8 +379,8 @@ export const places = [
         "name": "Tiruvannamalai",
         "type": "city",
         "category": "child",
-        "distance": "195",
-        "time": "5"
+        "distance": "196",
+        "time": "4"
       }
     ]
   }

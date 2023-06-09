@@ -1,7 +1,7 @@
-import Navbar from './navbar';
+import Header from './header';
 import Social from './social';
 
 export {
-    Navbar,
+    Header,
     Social,
 }
