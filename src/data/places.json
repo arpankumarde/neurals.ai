@@ -5,73 +5,11 @@
     "category": "parent",
     "child": [
       {
-        "name": "Jaipur",
+        "name": "Alwar",
         "type": "city",
         "category": "child",
-        "distance": "280",
-        "time": "4.5",
-        "best_time": [
-          "October",
-          "November",
-          "December",
-          "January",
-          "February",
-          "March"
-        ]
-      },
-      {
-        "name": "Agra",
-        "type": "city",
-        "category": "child",
-        "distance": "233",
-        "time": "3.5",
-        "best_time": ["November", "December", "January", "February", "March"]
-      },
-      {
-        "name": "Shimla",
-        "type": "hill",
-        "category": "child",
-        "distance": "348",
-        "time": "7",
-        "best_time": ["April", "May", "June", "September", "October"]
-      },
-      {
-        "name": "Mussoorie",
-        "type": "hill",
-        "category": "child",
-        "distance": "280 ",
-        "time": "6",
-        "best_time": ["April", "May", "June", "September", "October"]
-      },
-      {
-        "name": "Rishikesh",
-        "type": "pilgrimage",
-        "category": "child",
-        "distance": "242",
-        "time": "5",
-        "best_time": [
-          "September",
-          "October",
-          "November",
-          "February",
-          "March",
-          "April"
-        ]
-      },
-      {
-        "name": "Nainital",
-        "type": "city",
-        "category": "child",
-        "distance": "303",
-        "time": "7",
-        "best_time": ["March", "April", "May", "June", "September", "October"]
-      },
-      {
-        "name": "Jim Corbett National Park",
-        "type": "monument",
-        "category": "child",
-        "distance": "240",
-        "time": "5",
+        "distance": "150",
+        "time": "3",
         "best_time": ["November", "December", "January", "February", "March"]
       },
       {
@@ -106,12 +44,74 @@
         ]
       },
       {
-        "name": "Alwar",
+        "name": "Agra",
         "type": "city",
         "category": "child",
-        "distance": "150",
-        "time": "3",
+        "distance": "233",
+        "time": "3.5",
         "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Jim Corbett National Park",
+        "type": "spot",
+        "category": "child",
+        "distance": "240",
+        "time": "5",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Rishikesh",
+        "type": "pilgrimage",
+        "category": "child",
+        "distance": "242",
+        "time": "5",
+        "best_time": [
+          "September",
+          "October",
+          "November",
+          "February",
+          "March",
+          "April"
+        ]
+      },
+      {
+        "name": "Jaipur",
+        "type": "city",
+        "category": "child",
+        "distance": "280",
+        "time": "4.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Mussoorie",
+        "type": "hill",
+        "category": "child",
+        "distance": "280",
+        "time": "6",
+        "best_time": ["April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Nainital",
+        "type": "city",
+        "category": "child",
+        "distance": "303",
+        "time": "7",
+        "best_time": ["March", "April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Shimla",
+        "type": "hill",
+        "category": "child",
+        "distance": "348",
+        "time": "7",
+        "best_time": ["April", "May", "June", "September", "October"]
       }
     ]
   },
