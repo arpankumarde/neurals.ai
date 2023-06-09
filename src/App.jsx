@@ -3,7 +3,7 @@ import { places } from './data';
 import { Header, Social } from './components';
 import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument } from 'react-icons/fa';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiFillStar } from 'react-icons/ai';
 import { TbLocationBroken } from 'react-icons/tb';
 import { MdTempleHindu } from 'react-icons/md';
 import { GiWaterfall } from 'react-icons/gi'
@@ -80,6 +80,9 @@ function App() {
     else if (placeType == 'monument') return <FaMonument className='text-red-600' />
     else if (placeType == 'falls') return <GiWaterfall className='text-sky-600' />
   }
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let monthIndex = (new Date().getMonth());
+  let monthName = monthNames[monthIndex];
 
   return (
     <React.Fragment>
@@ -102,14 +105,32 @@ function App() {
                     <span>{item.name}</span>
                   </button>
                   {item.child.map((child, key2) => (
-                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[10%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
-                      <p className='flex items-center gap-2'>
+                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
+                      <p className='flex items-center gap-1'>
                         {typeToClass([child.type, item.child])}
                         <span>{child.name}</span>
                       </p>
-                      <span className='text-sm inline-flex text-center gap-1'>
-                        <span className='bg-violet-200 hover:bg-violet-300 rounded-md px-1 py-[0.15rem]'>{child.distance} km</span>
-                        <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hrs</span>
+                      <span className='text-sm inline-flex text-center gap-3 items-center'>
+                        {(child.best_time.includes(monthName)) ? <AiFillStar className='text-base' /> : ''}
+                        <div className='flex flex-col'>
+                          <span className='bg-violet-200 hover:bg-violet-300 rounded-md px-1 py-[0.15rem]'>{child.distance} km</span>
+                          <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hrs</span>
+                        </div>
+                      </span>
+                    </button>
+                  ))}
+                  {item.child.map((child, key2) => (
+                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? 'hidden' : ''} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
+                      <p className='flex items-center gap-1'>
+                        {typeToClass([child.type, item.child])}
+                        <span>{child.name}</span>
+                      </p>
+                      <span className='text-sm inline-flex text-center gap-3 items-center'>
+                        {(child.best_time.includes(monthName)) ? <AiFillStar className='text-base' /> : ''}
+                        <div className='flex flex-col'>
+                          <span className='bg-violet-200 hover:bg-violet-300 rounded-md px-1 py-[0.15rem]'>{child.distance} km</span>
+                          <span className='bg-yellow-200 hover:bg-yellow-300 rounded-md px-1 py-[0.15rem]'>{child.time} hrs</span>
+                        </div>
                       </span>
                     </button>
                   ))}
@@ -121,16 +142,15 @@ function App() {
               </div>
               <hr className="mt-2" />
             </div>
-            <div className="text-center mt-2 sm:block hidden ">
+            <div className="text-center mt-1 sm:block hidden ">
               Developed by&nbsp;
               <div className="inline-flex">
                 <a href="https://linkedin.com/in/arpan-kumar-de/" target='_blank' referrerPolicy='no-referrer' className="text-sky-700 font-semibold inline-flex">
-                  <span className='link-underline link-underline-black transition ease-in-out '>Arpan</span>
+                  <span className='link-underline link-underline-black transition ease-in-out'>Arpan</span>
                 </a>
               </div>
             </div>
           </div>
-
         </aside>
 
         {/** MAPSPACE */}

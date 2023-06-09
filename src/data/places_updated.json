@@ -1,0 +1,306 @@
+{
+  "Delhi": [
+    {
+      "place": "Jaipur",
+      "distance": "280 km",
+      "time": "4 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Agra",
+      "distance": "233 km",
+      "time": "3 hours 30 minutes",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Shimla",
+      "distance": "348 km",
+      "time": "7 hours",
+      "best_time": ["April", "May", "June", "September", "October"]
+    },
+    {
+      "place": "Mussoorie",
+      "distance": "280 km",
+      "time": "6 hours",
+      "best_time": ["April", "May", "June", "September", "October"]
+    },
+    {
+      "place": "Rishikesh",
+      "distance": "242 km",
+      "time": "5 hours",
+      "best_time": ["September", "October", "November", "February", "March", "April"]
+    },
+    {
+      "place": "Nainital",
+      "distance": "303 km",
+      "time": "7 hours",
+      "best_time": ["March", "April", "May", "June", "September", "October"]
+    },
+    {
+      "place": "Jim Corbett National Park",
+      "distance": "240 km",
+      "time": "5 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Mathura",
+      "distance": "183 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Haridwar",
+      "distance": "222 km",
+      "time": "4 hours",
+      "best_time": ["February", "March", "April", "May", "September", "October", "November"]
+    },
+    {
+      "place": "Alwar",
+      "distance": "150 km",
+      "time": "3 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    }
+  ],
+  "Mumbai": [
+    {
+      "place": "Lonavala",
+      "distance": "83 km",
+      "time": "2 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Mahabaleshwar",
+      "distance": "263 km",
+      "time": "4 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Pune",
+      "distance": "148 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Khandala",
+      "distance": "70 km",
+      "time": "2 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Matheran",
+      "distance": "44 km",
+      "time": "1 hour 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Nashik",
+      "distance": "167 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Kolad",
+      "distance": "122 km",
+      "time": "3 hours",
+      "best_time": ["June", "July", "August", "September", "October"]
+    },
+    {
+      "place": "Lavasa",
+      "distance": "188 km",
+      "time": "4 hours",
+      "best_time": ["June", "July", "August", "September", "October"]
+    },
+    {
+      "place": "Karjat",
+      "distance": "62 km",
+      "time": "1 hour 30 minutes",
+      "best_time": ["June", "July", "August", "September", "October"]
+    },
+    {
+      "place": "Ajanta and Ellora Caves",
+      "distance": "336 km",
+      "time": "7 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    }
+  ],
+  "Bangalore": [
+    {
+      "place": "Mysore",
+      "distance": "144 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Coorg",
+      "distance": "267 km",
+      "time": "5 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Ooty",
+      "distance": "270 km",
+      "time": "6 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Wayanad",
+      "distance": "277 km",
+      "time": "5 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Hampi",
+      "distance": "345 km",
+      "time": "7 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Chikmagalur",
+      "distance": "243 km",
+      "time": "4 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Kabini",
+      "distance": "210 km",
+      "time": "4 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Nandi Hills",
+      "distance": "61 km",
+      "time": "1 hour 30 minutes",
+      "best_time": ["September", "October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Shivanasamudra Falls",
+      "distance": "135 km",
+      "time": "3 hours",
+      "best_time": ["June", "July", "August", "September", "October"]
+    },
+    {
+      "place": "Sakleshpur",
+      "distance": "224 km",
+      "time": "5 hours",
+      "best_time": ["June", "July", "August", "September", "October"]
+    }
+  ],
+  "Kolkata": [
+    {
+      "place": "Darjeeling",
+      "distance": "608 km",
+      "time": "12 hours",
+      "best_time": ["April", "May", "October", "November", "December"]
+    },
+    {
+      "place": "Sundarbans",
+      "distance": "112 km",
+      "time": "3 hours",
+      "best_time": ["November", "December", "January", "February", "March", "April"]
+    },
+    {
+      "place": "Digha",
+      "distance": "187 km",
+      "time": "4 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Shantiniketan",
+      "distance": "163 km",
+      "time": "3 hours 30 minutes",
+      "best_time": ["September", "October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Mandarmani",
+      "distance": "171 km",
+      "time": "3 hours 30 minutes",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Bishnupur",
+      "distance": "132 km",
+      "time": "3 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Murshidabad",
+      "distance": "221 km",
+      "time": "5 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Bakkhali",
+      "distance": "125 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Kurseong",
+      "distance": "587 km",
+      "time": "11 hours",
+      "best_time": ["April", "May", "October", "November", "December"]
+    },
+    {
+      "place": "Kalimpong",
+      "distance": "624 km",
+      "time": "12 hours",
+      "best_time": ["April", "May", "October", "November", "December"]
+    }
+  ],
+  "Chennai": [
+    {
+      "place": "Pondicherry",
+      "distance": "170 km",
+      "time": "3 hours",
+      "best_time": ["October", "November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Mahabalipuram",
+      "distance": "55 km",
+      "time": "1 hour 30 minutes",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Kodaikanal",
+      "distance": "527 km",
+      "time": "9 hours",
+      "best_time": ["April", "May", "June", "September", "October"]
+    },
+    {
+      "place": "Yelagiri",
+      "distance": "230 km",
+      "time": "4 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Tirupati",
+      "distance": "135 km",
+      "time": "3 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Kanchipuram",
+      "distance": "72 km",
+      "time": "1 hour 30 minutes",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Rameswaram",
+      "distance": "572 km",
+      "time": "10 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Thanjavur",
+      "distance": "343 km",
+      "time": "7 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    },
+    {
+      "place": "Tiruvannamalai",
+      "distance": "196 km",
+      "time": "4 hours",
+      "best_time": ["November", "December", "January", "February", "March"]
+    }
+  ]
+}

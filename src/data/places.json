@@ -1,0 +1,615 @@
+[
+  {
+    "name": "Delhi",
+    "type": "city",
+    "category": "parent",
+    "child": [
+      {
+        "name": "Jaipur",
+        "type": "city",
+        "category": "child",
+        "distance": "280",
+        "time": "4.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Agra",
+        "type": "city",
+        "category": "child",
+        "distance": "233",
+        "time": "3.5",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Shimla",
+        "type": "hill",
+        "category": "child",
+        "distance": "348",
+        "time": "7",
+        "best_time": ["April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Mussoorie",
+        "type": "hill",
+        "category": "child",
+        "distance": "280 ",
+        "time": "6",
+        "best_time": ["April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Rishikesh",
+        "type": "pilgrimage",
+        "category": "child",
+        "distance": "242",
+        "time": "5",
+        "best_time": [
+          "September",
+          "October",
+          "November",
+          "February",
+          "March",
+          "April"
+        ]
+      },
+      {
+        "name": "Nainital",
+        "type": "city",
+        "category": "child",
+        "distance": "303",
+        "time": "7",
+        "best_time": ["March", "April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Jim Corbett National Park",
+        "type": "monument",
+        "category": "child",
+        "distance": "240",
+        "time": "5",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Mathura",
+        "type": "city",
+        "category": "child",
+        "distance": "183",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Haridwar",
+        "type": "city",
+        "category": "child",
+        "distance": "222",
+        "time": "4",
+        "best_time": [
+          "February",
+          "March",
+          "April",
+          "May",
+          "September",
+          "October",
+          "November"
+        ]
+      },
+      {
+        "name": "Alwar",
+        "type": "city",
+        "category": "child",
+        "distance": "150",
+        "time": "3",
+        "best_time": ["November", "December", "January", "February", "March"]
+      }
+    ]
+  },
+  {
+    "name": "Mumbai",
+    "type": "city",
+    "category": "parent",
+    "child": [
+      {
+        "name": "Lonavala",
+        "type": "hill",
+        "category": "child",
+        "distance": "83",
+        "time": "2",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Mahabaleshwar",
+        "type": "pilgrimage",
+        "category": "child",
+        "distance": "263",
+        "time": "4.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Pune",
+        "type": "city",
+        "category": "child",
+        "distance": "148",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Khandala",
+        "type": "hill",
+        "category": "child",
+        "distance": "70",
+        "time": "2",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Matheran",
+        "type": "hill",
+        "category": "child",
+        "distance": "44",
+        "time": "1.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Nashik",
+        "type": "city",
+        "category": "child",
+        "distance": "167",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Kolad",
+        "type": "city",
+        "category": "child",
+        "distance": "122",
+        "time": "3",
+        "best_time": ["June", "July", "August", "September", "October"]
+      },
+      {
+        "name": "Lavasa",
+        "type": "city",
+        "category": "child",
+        "distance": "188",
+        "time": "4",
+        "best_time": ["June", "July", "August", "September", "October"]
+      },
+      {
+        "name": "Karjat",
+        "type": "city",
+        "category": "child",
+        "distance": "62",
+        "time": "1.5",
+        "best_time": ["June", "July", "August", "September", "October"]
+      },
+      {
+        "name": "Ajanta and Ellora Caves",
+        "type": "monument",
+        "category": "child",
+        "distance": "336",
+        "time": "7",
+        "best_time": ["November", "December", "January", "February", "March"]
+      }
+    ]
+  },
+  {
+    "name": "Bangalore",
+    "type": "city",
+    "category": "parent",
+    "child": [
+      {
+        "name": "Mysore",
+        "type": "city",
+        "category": "child",
+        "distance": "144",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Coorg",
+        "type": "city",
+        "category": "child",
+        "distance": "267",
+        "time": "5.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Ooty",
+        "type": "hill",
+        "category": "child",
+        "distance": "270",
+        "time": "6",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Wayanad",
+        "type": "city",
+        "category": "child",
+        "distance": "277",
+        "time": "5.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Hampi",
+        "type": "monument",
+        "category": "child",
+        "distance": "345",
+        "time": "7",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Chikmagalur",
+        "type": "city",
+        "category": "child",
+        "distance": "243",
+        "time": "4.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Kabini",
+        "type": "city",
+        "category": "child",
+        "distance": "210",
+        "time": "4",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Nandi Hills",
+        "type": "hill",
+        "category": "child",
+        "distance": "61",
+        "time": "1.5",
+        "best_time": [
+          "September",
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Shivanasamudra Falls",
+        "type": "falls",
+        "category": "child",
+        "distance": "135",
+        "time": "3",
+        "best_time": ["June", "July", "August", "September", "October"]
+      },
+      {
+        "name": "Sakleshpur",
+        "type": "hill",
+        "category": "child",
+        "distance": "224",
+        "time": "5",
+        "best_time": ["June", "July", "August", "September", "October"]
+      }
+    ]
+  },
+  {
+    "name": "Kolkata",
+    "type": "city",
+    "category": "parent",
+    "child": [
+      {
+        "name": "Darjeeling",
+        "type": "hill",
+        "category": "child",
+        "distance": "608",
+        "time": "12",
+        "best_time": ["April", "May", "October", "November", "December"]
+      },
+      {
+        "name": "Sundarbans",
+        "type": "jungle",
+        "category": "child",
+        "distance": "112",
+        "time": "3",
+        "best_time": [
+          "November",
+          "December",
+          "January",
+          "February",
+          "March",
+          "April"
+        ]
+      },
+      {
+        "name": "Digha",
+        "type": "beach",
+        "category": "child",
+        "distance": "187",
+        "time": "4",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Shantiniketan",
+        "type": "city",
+        "category": "child",
+        "distance": "163",
+        "time": "3.5",
+        "best_time": [
+          "September",
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Mandarmani",
+        "type": "beach",
+        "category": "child",
+        "distance": "171",
+        "time": "3.5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Bishnupur",
+        "type": "city",
+        "category": "child",
+        "distance": "132",
+        "time": "3",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Murshidabad",
+        "type": "city",
+        "category": "child",
+        "distance": "221",
+        "time": "5",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Bakkhali",
+        "type": "city",
+        "category": "child",
+        "distance": "125",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Kurseong",
+        "type": "city",
+        "category": "child",
+        "distance": "587",
+        "time": "11",
+        "best_time": ["April", "May", "October", "November", "December"]
+      },
+      {
+        "name": "Kalimpong",
+        "type": "city",
+        "category": "child",
+        "distance": "624",
+        "time": "12",
+        "best_time": ["April", "May", "October", "November", "December"]
+      }
+    ]
+  },
+  {
+    "name": "Chennai",
+    "type": "city",
+    "category": "parent",
+    "child": [
+      {
+        "name": "Pondicherry",
+        "type": "city",
+        "category": "child",
+        "distance": "170",
+        "time": "3",
+        "best_time": [
+          "October",
+          "November",
+          "December",
+          "January",
+          "February",
+          "March"
+        ]
+      },
+      {
+        "name": "Mahabalipuram",
+        "type": "city",
+        "category": "child",
+        "distance": "55",
+        "time": "1.5",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Kodaikanal",
+        "type": "hill",
+        "category": "child",
+        "distance": "524",
+        "time": "10",
+        "best_time": ["April", "May", "June", "September", "October"]
+      },
+      {
+        "name": "Yelagiri",
+        "type": "hill",
+        "category": "child",
+        "distance": "227",
+        "time": "4.5",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Yercaud",
+        "type": "hill",
+        "category": "child",
+        "distance": "367",
+        "time": "6",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Tirupati",
+        "type": "pilgrimage",
+        "category": "child",
+        "distance": "135",
+        "time": "3",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Rameshwaram",
+        "type": "city",
+        "category": "child",
+        "distance": "550",
+        "time": "10",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Vellore",
+        "type": "city",
+        "category": "child",
+        "distance": "137",
+        "time": "3",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Thanjavur",
+        "type": "city",
+        "category": "child",
+        "distance": "343",
+        "time": "7",
+        "best_time": ["November", "December", "January", "February", "March"]
+      },
+      {
+        "name": "Tiruvannamalai",
+        "type": "city",
+        "category": "child",
+        "distance": "196",
+        "time": "4",
+        "best_time": ["November", "December", "January", "February", "March"]
+      }
+    ]
+  }
+]

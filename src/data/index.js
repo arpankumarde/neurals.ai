@@ -1,5 +1,5 @@
-import { places } from "./places";
-import { posts } from "./posts";
+import places from "./places.json";
+import posts from "./posts.json";
 
 export {
     places,
