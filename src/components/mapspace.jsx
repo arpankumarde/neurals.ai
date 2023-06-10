@@ -2,7 +2,7 @@ import React from 'react'
 
 const Mapspace = ({ mapSrc }) => {
     return (
-        <div className="max-w-full sm:w-full sm:my-2 rounded-xl flex">{/* bg-[#e5e3df] */}
+        <div className="max-w-full sm:w-full mx-2 sm:mx-0 sm:my-2 rounded-xl flex"> {/* bg-[#e5e3df] */}
             <div className="w-full">
                 <iframe
                     src={mapSrc}

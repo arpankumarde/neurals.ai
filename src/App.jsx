@@ -90,13 +90,13 @@ function App() {
     <React.Fragment>
       <Header />
 
-      <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden gap-2 sm:gap-0">
+      <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden">
 
         {/** SEARCHBAR */}
-        <aside className='sm:h-[89.9vh] sm:w-[45%] w-full m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
-          <div id="searchbar" className="sticky mr-2 sm:mr-0 sm:mb-2 flex items-center border-sky-500 focus-within:border-sky-600 border-2 rounded-full pl-3 text-lg">
+        <aside className='sm:h-[89.9vh] sm:w-[45%] m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
+          <div id="searchbar" className="sticky mb-2 flex items-center border-sky-500 focus-within:border-sky-600 border-2 rounded-full pl-3 pr-2 text-lg">
             <AiOutlineSearch />
-            <input id="search" type="text" placeholder="Search..." className='w-24 bg-transparent sm:w-full outline-none px-2 rounded-full h-10 text-lg' onChange={sortList} />
+            <input id="search" type="text" placeholder="Search for any place" className='w-full bg-transparent sm:w-full outline-none px-2 rounded-full h-11 text-lg' onChange={sortList} />
           </div>
           <div className="placeFrame scrollbar-hide w-full flex flex-col justify-between pb-3 sm:pb-0 overflow-auto">
             <div id='btnList' className='flex gap-1 flex-col'>
@@ -109,12 +109,12 @@ function App() {
                   {item.child.map((child, key2) => (
                     <>
                       <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
-                        <p className='flex items-center gap-1'>
+                        <p className='flex items-center gap-2'>
                           {typeToClass([child.type, item.child])}
                           <span>{child.name}</span>
                         </p>
                         <span className='text-sm inline-flex text-center gap-3 items-center'>
-                          <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg hover:text-orange-500'  /> : ''}</span>
+                          <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg hover:animate-pulse' /> : ''}</span>
                           <div className='flex flex-col'>
                             <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem]'>{child.distance} km</span>
                             <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem]'>{child.time} hrs</span>
@@ -125,7 +125,7 @@ function App() {
                   ))}
                   {item.child.map((child, key2) => (
                     <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? 'hidden' : ''} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
-                      <p className='flex items-center gap-1'>
+                      <p className='flex items-center gap-2'>
                         {typeToClass([child.type, item.child])}
                         <span>{child.name}</span>
                       </p>
@@ -149,12 +149,12 @@ function App() {
               Developed by&nbsp;
               <div className="inline-flex">
                 <a href="https://linkedin.com/in/arpan-kumar-de/" target='_blank' referrerPolicy='no-referrer' className="text-sky-700 font-semibold inline-flex">
-                  <span className='link-underline link-underline-black transition ease-in-out'>Arpan</span>
+                  <span className='link-underline link-underline-black transition bg-[#eaff8a95] ease-in-out'>Arpan</span>
                 </a>
               </div>
             </div>
           </div>
-          <Tooltip id="best" className='p-0' place='bottom' style={{ backgroundColor: "#ffffff95", paddingTop: "0.4rem", paddingBottom: "0.4rem", paddingLeft: "1rem", paddingRight: "1rem", borderRadius: "99rem" }} />
+          <Tooltip id="best" place='bottom' style={{ backgroundColor: "#ffffff95", paddingTop: "0.2rem", paddingBottom: "0.2rem", paddingLeft: "0.7rem", paddingRight: "0.7rem", borderRadius: "99rem" }} />
         </aside>
 
         {/** MAPSPACE */}
@@ -167,4 +167,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
