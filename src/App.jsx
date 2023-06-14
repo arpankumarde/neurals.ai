@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { places } from './data';
-import { Header, Mapspace, Social } from './components';
+import { Header, Mapspace, Social, Widget } from './components';
 import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument, FaHubspot } from 'react-icons/fa';
 import { AiOutlineSearch, AiFillStar } from 'react-icons/ai';
@@ -14,28 +14,56 @@ import { Tooltip } from 'react-tooltip';
 function App() {
   const [mapGrid, setMapGrid] = useState("https://www.google.com/maps?&z=5&q=India&output=embed");
   const [majCity, setMajCity] = useState('');
+  const [placeData, setPlaceData] = useState([]);
+  const [widget, setWidget] = useState(false);
+  const [weatherData, setWeatherData] = useState([]);
 
   function changeMapSrc(code) {
-    let url = import.meta.env.VITE_COORD_API + encodeURI(code + ', India');
-    let data, mapSrc;
-    axios.get(url)
-      .then((response) => {
-        data = { "lat": response.data[0].lat, "lon": response.data[0].lon };
-      }).finally(() => {
-        if (data) {
-          mapSrc = encodeURI(`https://www.google.com/maps?z=7&q=${data.lat},${data.lon}` + `&output=embed&ll=${data.lat},${data.lon}`);
-        } else {
-          mapSrc = encodeURI(`https://www.google.com/maps?z=9&q=${code}` + `&output=embed&ll=${code}`);
-        }
-        setMapGrid(mapSrc);
-      }).catch((error) => {
-        console.error(error)
+    let url = import.meta.env.VITE_WIKI_API + encodeURI(code + ', India');
+    let pageChunk = '';
+    let wikiURL = '', mapSrc = '';
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        pageChunk = data.query.pages;
+        Object.entries(pageChunk).forEach(([key, value]) => {
+          if (value.index == 1) {
+            wikiURL = (import.meta.env.VITE_WIKI_SUMMARY_API + value.title);
+          }
+        });
       })
+      .finally(() => {
+        fetch(wikiURL)
+          .then((response) => response.json())
+          .then((data) => {
+            mapSrc = encodeURI(`https://www.google.com/maps?z=7&q=${code}` + `&output=embed&ll=${data.coordinates.lat},${data.coordinates.lon}`);
+            setMapGrid(mapSrc);
+            setPlaceData([data]);
+            getWeather(data.coordinates.lat, data.coordinates.lon);
+            setWidget(true);
+          })
+          .catch((error) => console.error("IN: " + error));
+      })
+      .catch((error) => console.error("OUT: " + error));
   }
 
   function setMajorURL(code) {
-    changeMapSrc(code) //setting iframe to new coordinates
+    changeMapSrc(code); //setting iframe to new coordinates
     setMajCity(code); //setting Major City to update Minor City List
+  }
+
+  function getWeather(lat, lon) {
+    let temp = `lat=${lat}&lon=${lon}`;
+    let url = import.meta.env.VITE_WEATHER_API + encodeURI(temp);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setWeatherData([data]);
+      })
+      .finally((data) => {
+        console.log(weatherData);
+      })
+      .catch((error) => console.error("Weather:" + error))
   }
 
   function countHiddenNodes(li) {
@@ -88,9 +116,10 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header />
+      <Header weatherData={weatherData} majCity={majCity} />
 
-      <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden">
+
+      <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden scrollbar-hidden">
 
         {/** SEARCHBAR */}
         <aside className='sm:h-[89.9vh] sm:w-[45%] m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
@@ -114,7 +143,7 @@ function App() {
                           <span>{child.name}</span>
                         </p>
                         <span className='text-sm inline-flex text-center gap-3 items-center'>
-                          <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg hover:animate-pulse' /> : ''}</span>
+                          <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg' /> : ''}</span>
                           <div className='flex flex-col'>
                             <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem]'>{child.distance} km</span>
                             <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem]'>{child.time} hrs</span>
@@ -149,7 +178,7 @@ function App() {
               Developed by&nbsp;
               <div className="inline-flex">
                 <a href="https://linkedin.com/in/arpan-kumar-de/" target='_blank' referrerPolicy='no-referrer' className="text-sky-700 font-semibold inline-flex">
-                  <span className='link-underline link-underline-black transition bg-[#eaff8a95] ease-in-out'>Arpan</span>
+                  <span className='link-underline link-underline-black'>Arpan</span>
                 </a>
               </div>
             </div>
@@ -163,6 +192,7 @@ function App() {
         {/** RIGHT SIDEBAR */}
         <Social />
       </div>
+      {widget ? <Widget visible={widget} placeName={majCity} placeData={placeData} /> : ''}
     </React.Fragment>
   )
 }
