@@ -25,12 +25,14 @@ function App() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        pageChunk = data.query.pages;
-        Object.entries(pageChunk).forEach(([key, value]) => {
-          if (value.index == 1) {
-            wikiURL = (import.meta.env.VITE_WIKI_SUMMARY_API + value.title);
-          }
-        });
+        try {
+          pageChunk = data.query.pages;
+          Object.entries(pageChunk).forEach(([key, value]) => {
+            if (value.index == 1) {
+              wikiURL = (import.meta.env.VITE_WIKI_SUMMARY_API + value.title);
+            }
+          });
+        } catch (error) { console.error("Wiki Source Not found: " + error) }
       })
       .finally(() => {
         fetch(wikiURL)
@@ -59,9 +61,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setWeatherData([data]);
-      })
-      .finally((data) => {
-        console.log(weatherData);
       })
       .catch((error) => console.error("Weather:" + error))
   }
@@ -99,6 +98,22 @@ function App() {
     }
   }
 
+  function expand(code) {
+    code = code.toUpperCase();
+    let input, filter, ul, li, a, i, txtValue;
+    ul = document.getElementById("btnList");
+    li = ul.getElementsByTagName("button");
+    for (i = 0; i < li.length; i++) {
+      a = li[i];
+      txtValue = a.getAttribute('data-search') || a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(code) > -1) {
+        li[i].style.display = "flex";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+
   const typeToClass = ([placeType, category]) => {
     if (placeType == 'city' && category == 'parent') return <FaLocationArrow className='text-red-600' />
     else if (placeType == 'spot') return <FaHubspot className='text-green-700 -scale-x-100' />
@@ -118,7 +133,6 @@ function App() {
     <React.Fragment>
       <Header weatherData={weatherData} majCity={majCity} />
 
-
       <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden scrollbar-hidden">
 
         {/** SEARCHBAR */}
@@ -131,13 +145,16 @@ function App() {
             <div id='btnList' className='flex gap-1 flex-col'>
               {places.map((item, key) => (
                 <>
-                  <button key={key} onClick={() => setMajorURL(item.name)} data-search={item.name} type='button' className={`${(item.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
+                  <button key={key} onClick={() => {
+                    setMajorURL(item.name);
+                    expand(item.name);
+                  }} data-search={item.name} type='button' className={`${(item.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} inline-flex overflow-auto shadow-md listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-3 px-4 rounded-lg my-1 text-lg items-center gap-2`}>
                     {typeToClass([item.type, item.category])}
                     <span>{item.name}</span>
                   </button>
                   {item.child.map((child, key2) => (
                     <>
-                      <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
+                      <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`hidden justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
                         <p className='flex items-center gap-2'>
                           {typeToClass([child.type, item.child])}
                           <span>{child.name}</span>
@@ -153,7 +170,7 @@ function App() {
                     </>
                   ))}
                   {item.child.map((child, key2) => (
-                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`justify-between ${(child.best_time.includes(monthName)) ? 'hidden' : ''} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
+                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`hidden justify-between ${(child.best_time.includes(monthName)) ? 'hidden' : ''} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
                       <p className='flex items-center gap-2'>
                         {typeToClass([child.type, item.child])}
                         <span>{child.name}</span>

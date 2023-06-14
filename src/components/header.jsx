@@ -7,10 +7,8 @@ const Header = ({ weatherData, majCity }) => {
   let data = weatherData ? weatherData[0] : false;
 
   if (data) {
-    var { description, icon } = data.weather[0];
-    var iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    var { description } = data.weather[0];
   }
-  console.log(data);
 
   return (
     <header className='h-10 sm:h-[6.5vh] sm:max-h-12 flex justify-center sm:justify-between mx-2 mt-2 text-lg select-none'>
