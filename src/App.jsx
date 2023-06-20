@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { places } from './data';
-import { Header, Mapspace, Social, Widget } from './components';
+import { Desc, Header, Mapspace, Social, Widget } from './components';
 import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument, FaHubspot } from 'react-icons/fa';
 import { AiOutlineSearch, AiFillStar } from 'react-icons/ai';
@@ -17,6 +17,7 @@ function App() {
   const [placeData, setPlaceData] = useState([]);
   const [widget, setWidget] = useState(false);
   const [weatherData, setWeatherData] = useState([]);
+  const [tab, setTab] = useState(false);
 
   function changeMapSrc(code) {
     let url = import.meta.env.VITE_WIKI_API + encodeURI(code + ', India');
@@ -131,7 +132,8 @@ function App() {
 
   return (
     <React.Fragment>
-      <Header weatherData={weatherData} majCity={majCity} />
+      <Header />
+      {/* <Header weatherData={weatherData} majCity={majCity} /> */}
 
       <div className="flex sm:flex-row flex-col w-full select-none overflow-hidden scrollbar-hidden">
 
@@ -204,12 +206,18 @@ function App() {
         </aside>
 
         {/** MAPSPACE */}
-        <Mapspace mapSrc={mapGrid} />
+        <div className='max-w-full sm:w-full mx-2 sm:mx-0 sm:my-2 rounded-xl'>
+          <nav className='flex justify-evenly sm:justify-center sm:gap-2 p-2 sm:h-[9vh]'>
+            <button onClick={() => setTab(false)} className='bg-gradient-to-r from-zinc-200 to-zinc-300 px-4 py-2 rounded-lg'>Show Map</button>
+            <button onClick={() => setTab(true)} className='bg-gradient-to-r from-zinc-200 to-zinc-300 px-4 py-2 rounded-lg'>Description</button>
+          </nav>
+          {!tab ? <Mapspace mapSrc={mapGrid} /> : <Desc placeName={majCity} placeData={placeData} />}
+        </div>
 
         {/** RIGHT SIDEBAR */}
-        <Social />
+        <Social weatherData={weatherData} majCity={majCity} />
       </div>
-      {widget ? <Widget visible={widget} placeName={majCity} placeData={placeData} /> : ''}
+      {/* {widget ? <Widget visible={widget} placeName={majCity} placeData={placeData} /> : ''} */}
     </React.Fragment>
   )
 }

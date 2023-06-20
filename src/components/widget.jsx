@@ -12,17 +12,21 @@ const Widget = ({ visible, placeName, placeData }) => {
     }
 
     return (
-        <div className={`${status ? 'fixed visible' : 'hidden'} flex flex-col gap-1 z-40 w-fit sm:max-w-full sm:w-[22%] max-h-[80vh] transition-all ease-in-out bg-[#ffffff8e] backdrop-blur-xl shadow-2xl drop-shadow-2xl p-3 bottom-2 right-2 left-2 sm:left-auto rounded-xl select-none`}>
+        <div className={`${status ? 'fixed visible' : 'hidden'} flex flex-col sm:flex-row gap-2 text-sm z-40 w-fit sm:max-w-full sm:w-[35%] max-h-[60vh] transition-all ease-in-out bg-[#ffffffb4] backdrop-blur-xl shadow-2xl drop-shadow-2xl p-2 bottom-2 right-2 left-2 sm:left-auto rounded-xl select-none`}>
             {/* <button className='w-fit h-fit rounded-full float-right ' onClick={() => setStatus(!status)}>
                 <AiFillCloseCircle className='bg-white text-red-600 hover:text-red-700 transition-all ease-in-out text-2xl rounded-full z-50' />
             </button> */}
-            <div className='sticky max-h-fit pb-1'>
-                <div className='flex flex-col text-center items-center max-w-full'>
-                    {thumbnail ? <img src={thumbnail} alt={placeName} className='rounded-xl pointer-events-none max-w-full max-h-[50vh] transition-all ease-linear' draggable='false' loading='lazy' /> : ''}
-                    <span className='text-sm'>{placeName}, {data.description}</span>
+            <div className='flex flex-col justify-between flex-1'>
+                <div className='flex flex-col text-center items-center'>
+                    {thumbnail ? <img src={thumbnail} alt={placeName} className='rounded-lg pointer-events-none max-h-[50vh] transition-all ease-linear' draggable='false' loading='lazy' /> : ''}
+                    <span>{placeName},<br />{data.description}</span>
                 </div>
+                {/* <div className='hidden sm:flex flex-col'>
+                    <span>Latitude: {data.coordinates.lat}</span>
+                    <span>Longitude: {data.coordinates.lon}</span>
+                </div> */}
             </div>
-            <div className='overflow-y-auto scrollbar-hide text-center items-center gap-1 flex flex-col'>
+            <div className='overflow-y-auto scrollbar-hide text-center items-center gap-1 flex flex-col max-w-sm flex-1'>
                 <article className='text-justify select-text'>
                     {data.extract}
                 </article>
