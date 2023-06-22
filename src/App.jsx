@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { places } from './data';
 import { Desc, Header, Mapspace, Social, Widget } from './components';
-import axios from "axios";
 import { FaLocationArrow, FaCity, FaMountain, FaUmbrellaBeach, FaTree, FaMonument, FaHubspot } from 'react-icons/fa';
 import { AiOutlineSearch, AiFillStar } from 'react-icons/ai';
-import { TbLocationBroken } from 'react-icons/tb';
+import { TbLocationBroken, TbMap } from 'react-icons/tb';
 import { MdTempleHindu } from 'react-icons/md';
 import { GiWaterfall } from 'react-icons/gi'
-import { CgRedo } from 'react-icons/cg';
+import { CgDetailsMore, CgRedo } from 'react-icons/cg';
 import { Tooltip } from 'react-tooltip';
 
 
 function App() {
   const [mapGrid, setMapGrid] = useState("https://www.google.com/maps?&z=5&q=India&output=embed");
   const [majCity, setMajCity] = useState('');
+  const [minCity, setMinCity] = useState('');
   const [placeData, setPlaceData] = useState([]);
   const [widget, setWidget] = useState(false);
   const [weatherData, setWeatherData] = useState([]);
@@ -101,7 +101,7 @@ function App() {
 
   function expand(code) {
     code = code.toUpperCase();
-    let input, filter, ul, li, a, i, txtValue;
+    let ul, li, a, i, txtValue;
     ul = document.getElementById("btnList");
     li = ul.getElementsByTagName("button");
     for (i = 0; i < li.length; i++) {
@@ -141,12 +141,12 @@ function App() {
         <aside className='sm:h-[89.9vh] sm:w-[45%] m-2 sm:pr-2 pr-0 flex flex-col sm:border-r-[1px] border-zinc-200'>
           <div id="searchbar" className="sticky mb-2 flex items-center border-sky-500 focus-within:border-sky-600 border-2 rounded-full pl-3 pr-2 text-lg">
             <AiOutlineSearch />
-            <input id="search" type="text" placeholder="Search for any place" className='w-full bg-transparent sm:w-full outline-none px-2 rounded-full h-11 text-lg' onChange={sortList} />
+            <input id="search" type="text" placeholder="Search for any place" aria-label='Search for any place' role='searchbox' className='w-full bg-transparent sm:w-full outline-none px-2 rounded-full h-11 text-lg' onChange={sortList} />
           </div>
-          <div className="placeFrame scrollbar-hide w-full flex flex-col justify-between pb-3 sm:pb-0 overflow-auto">
+          <div className="placeFrame scrollbar-hide w-full flex flex-col justify-between overflow-auto">
             <div id='btnList' className='flex gap-1 flex-col'>
               {places.map((item, key) => (
-                <>
+                <React.Fragment key={key}>
                   <button key={key} onClick={() => {
                     setMajorURL(item.name);
                     expand(item.name);
@@ -155,23 +155,21 @@ function App() {
                     <span>{item.name}</span>
                   </button>
                   {item.child.map((child, key2) => (
-                    <>
-                      <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`hidden justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
-                        <p className='flex items-center gap-2'>
-                          {typeToClass([child.type, item.child])}
-                          <span>{child.name}</span>
-                        </p>
-                        <span className='text-sm inline-flex text-center gap-3 items-center'>
-                          <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg' /> : ''}</span>
-                          <div className='flex flex-col'>
-                            <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem]'>{child.distance} km</span>
-                            <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem]'>{child.time} hrs</span>
-                          </div>
-                        </span>
-                      </button>
-                    </>
+                    <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`hidden justify-between ${(child.best_time.includes(monthName)) ? '' : 'hidden'} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center`}>
+                      <p className='flex items-center gap-2'>
+                        {typeToClass([child.type, item.child])}
+                        <span>{child.name}</span>
+                      </p>
+                      <span className='text-sm inline-flex text-center gap-2 items-center'>
+                        <span data-tooltip-content='Best Season' data-tooltip-variant='light' data-tooltip-id='best' >{(child.best_time.includes(monthName)) ? <AiFillStar className='text-lg' /> : ''}</span>
+                        <div className='flex flex-col w-12 text-center'>
+                          <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem] text-xs'>{child.distance} km</span>
+                          <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem] text-xs'>{child.time} hrs</span>
+                        </div>
+                      </span>
+                    </button>
                   ))}
-                  {item.child.map((child, key2) => (
+                  {/* {item.child.map((child, key2) => (
                     <button key={key2} onClick={() => setMajorURL(child.name)} data-search={`${item.name} ${child.name}`} type='button' className={`hidden justify-between ${(child.best_time.includes(monthName)) ? 'hidden' : ''} ${(child.name == majCity) ? 'bg-zinc-300 hover:bg-zinc-300 shadow-lg' : ''} ml-[7.5%] inline-flex overflow-auto listBtn hover:bg-zinc-200 hover:shadow-lg active:bg-zinc-300 min-w-fit max-w-full lg:text-left py-2 px-4 rounded-lg my-0 text-lg items-center gap-1`}>
                       <p className='flex items-center gap-2'>
                         {typeToClass([child.type, item.child])}
@@ -179,13 +177,13 @@ function App() {
                       </p>
                       <span className='text-sm inline-flex text-center gap-3 items-center'>
                         <div className='flex flex-col'>
-                          <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem]'>{child.distance} km</span>
-                          <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem]'>{child.time} hrs</span>
+                          <span className='bg-violet-200 rounded-t-md px-1 py-[0.15rem] text-xs'>{child.distance} km</span>
+                          <span className='bg-yellow-200 rounded-b-md px-1 py-[0.15rem] text-xs'>{child.time} hrs</span>
                         </div>
                       </span>
                     </button>
-                  ))}
-                </>
+                  ))} */}
+                </React.Fragment>
               ))}
               <div className='text-base text-center sm:w-full min-w-max p-2 hidden' id="noFoundText">
                 <span className=''>No suitable places found <TbLocationBroken className='text-red-600 inline' /></span><br />
@@ -207,11 +205,11 @@ function App() {
 
         {/** MAPSPACE */}
         <div className='max-w-full sm:w-full mx-2 sm:mx-0 sm:my-2 rounded-xl'>
-          <nav className='flex justify-evenly sm:justify-center sm:gap-2 p-2 sm:h-[9vh]'>
-            <button onClick={() => setTab(false)} className='bg-gradient-to-r from-zinc-200 to-zinc-300 px-4 py-2 rounded-lg'>Show Map</button>
-            <button onClick={() => setTab(true)} className='bg-gradient-to-r from-zinc-200 to-zinc-300 px-4 py-2 rounded-lg'>Description</button>
+          <nav className='flex justify-evenly sm:justify-center sm:gap-2 p-2 sm:h-[8vh] font-medium'>
+            <button type='button' onClick={() => setTab(false)} className={`${!tab && 'text-blue-700'} bg-gradient-to-r from-zinc-100 to-zinc-200 px-4 py-2 rounded-lg hover:text-blue-700`}><TbMap className='inline-block text-lg mr-2' />Show Map</button>
+            <button type='button' onClick={() => setTab(true)} className={`${tab && 'text-blue-700'} ${(majCity || minCity) ? 'block' : 'hidden'} bg-gradient-to-r from-zinc-100 to-zinc-200 px-4 py-2 rounded-lg hover:text-blue-700`}><CgDetailsMore className='inline-block text-lg mr-2' />Description</button>
           </nav>
-          {!tab ? <Mapspace mapSrc={mapGrid} /> : <Desc placeName={majCity} placeData={placeData} />}
+          {!tab ? <Mapspace mapSrc={mapGrid} /> : <Desc majCity={majCity} minCity={minCity} placeData={placeData} />}
         </div>
 
         {/** RIGHT SIDEBAR */}
